@@ -14,7 +14,7 @@ id
 lat
 long
 datetime
-pass_count
+echo_count
 
 
 CREATE TABLE echo (
@@ -30,10 +30,10 @@ CREATE TABLE echo_history (
 	lat DOUBLE NOT NULL,
 	long DOUBLE NOT NULL,
 	datetime DATETIME NOT NULL,
-	pass_count INT NOT NULL,
+	echo_count INT NOT NULL,
 	CONSTRAINT valid_lat CHECK (90 >= lat AND lat >= -90),
 	CONSTRAINT valid_long CHECK (180 >= long AND long >= -180),
-	CONSTRAINT valid_pass_count CHECK (pass_count >= 1),
+	CONSTRAINT valid_echo_count CHECK (echo_count >= 1),
 	FOREIGN KEY (id) REFERENCES echo(id),
 	PRIMARY KEY (id)
 );
