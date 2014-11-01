@@ -1,0 +1,361 @@
+@charset "UTF-8";
+/* CSS declarations go here */
+/*-------------------------------------------------------------
+                    GLOBAL STYLES
+---------------------------------------------------------------*/
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+@font-face {
+    font-family: LatinModern;
+    src: url("../fonts/lmroman10-regular.otf") format("opentype");
+}
+body {
+  font-family: LatinModern, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: 200 !important;
+}
+.body {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #fff;
+    margin: 1em 0;
+    padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+a {
+  color: #27ae60;
+}
+.no-padding {
+  padding: 0 !important;
+}
+.space10 {
+  margin-bottom: 10px;
+}
+.space15 {
+  margin-bottom: 15px;
+}
+.space20 {
+  margin-bottom: 20px;
+}
+.space25 {
+  margin-bottom: 25px;
+}
+.space30 {
+  margin-bottom: 30px;
+}
+.space35 {
+  margin-bottom: 35px;
+}
+.space40 {
+  margin-bottom: 40px;
+}
+.space50 {
+  margin-bottom: 50px;
+}
+.space60 {
+  margin-bottom: 60px;
+}
+.space70 {
+  margin-bottom: 70px;
+}
+.space80 {
+  margin-bottom: 80px;
+}
+.space90 {
+  margin-bottom: 90px;
+}
+.space100 {
+  margin-bottom: 100px;
+}
+/*-------------------------------------------------------------
+                    HEADER STYLES
+---------------------------------------------------------------*/
+.navbar-default {
+  background-color: #f8bc3b !important;
+  border: none !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #f8bc3b;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  font-weight: 500;
+}
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 2px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.topnav-pages {
+  background: #fff;
+}
+.navbar-brand-capsolv {
+/*  width: 174px;
+  height: 30px;*/
+  font-size: 24px;
+  height: 60px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+#logo-title{
+  float: right;
+  color: #555;
+  font-size: 36px;
+  margin-left: 15px;
+  font-weight: 500;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/*-------------------------------------------------------------
+                    CONTACT INFO STYLES
+---------------------------------------------------------------*/
+.contact-info {
+  padding: 20px 0;
+  background: #2f2f2f;
+  border-bottom: 1px solid #3c3c3c;
+}
+.contact-info img {
+  display: table;
+  margin: 0 auto 45px;
+}
+.contact-info p {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 28px;
+  margin-bottom: 30px;
+}
+
+.services {
+  background: #fff;
+  padding: 80px 0;
+}
+.services-content .fontawesome {
+  display: table;
+  margin: 0 auto 35px;
+}
+.services-content h4 {
+  font-size: 24px;
+  margin: 0 0 15px;
+  text-align: center;
+}
+.services-content p {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 200;
+  line-height: 28px;
+  margin: 0 auto;
+  width: 95%;
+}
+/*-------------------------------------------------------------
+                   FOOTER STYLES
+---------------------------------------------------------------*/
+.social {
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  display: table;
+}
+.social li {
+  float: left;
+  list-style: none;
+  margin: 10px 7px 5px;
+}
+.social li a {
+  display: table;
+  padding:0px 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-logo{
+  background: url(../images/capsolv_icon.png);
+  width: 60px;
+  height: 60px;
+  float: left;
+  margin-bottom: 5px;
+  /*display: block;*/
+}
+
+/*
+Boxes for capture and solve
+*/
+
+.capsolv-wrap{
+  background-image: url('../images/capsolv_background.JPG');
+  /*background-repeat: no-repeat;*/
+  background-size: 100% 140%;
+  min-height: 100vh; /* min. height for modern browser */
+  height: 100vh;
+  /*height: 500px;*/
+  /*background-color: rgba(200, 200, 100, 0.9);*/
+  /*height: 3000px;*/
+  /*padding: 100px;*/
+}
+
+#capture-box{
+  margin-top: -30px;
+  margin-bottom: 10px;
+}
+
+#solve-box{
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
+
+.svg-inject{
+  width: 100%;
+  /*fill: red;*/
+}
+
+#svg2{
+  width: 75%;
+  margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+.capsolv-box{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 8px auto;
+  padding: 25px;
+  color: #fff;
+}
+
+#outputText{
+ width:50%;
+height:50%;
+font-size: 40px;
+text-align: center;
+}
+
+/*#outputBox{
+  width: 50% !important;
+  height: 300px !important;
+}*/
+
+.dropzone{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 250px;
+  height: 250px;
+  border: 5px solid #ccc;
+  border-radius: 15%;
+}
+
+#capsolving{
+  margin:0 auto;
+  width: 190px;
+  height: 190px;
+  border: 5px solid #ccc;
+  border-radius: 15%;
+  display:none;
+}
+
+#capsolv-complete{
+  margin:0 auto;
+  width: 100%;
+  height: 105%;
+  border: 5px solid #ccc;
+  /*border-radius: 15%;*/
+  display:none;
+  padding-bottom: 15px;
+}
+
+/*
+About
+*/
+.about-capsolv{
+  color: #fff;
+  padding:75px;
+  background-color: rgba(199, 92, 92, 1.0);
+}
+
+.features-box{
+  width: 75%;
+  height: 75%;
+  background-color: rgba(255,255,255, 0.9);
+  border-radius: 5px;
+  margin: 8px auto;
+  padding: 50px;
+  color: #333;
+}
+
+
+/*.fa-circle{
+  width: 64px;
+  height: 64px;
+}*/
+
+/*
+Contact
+*/
+.contact{
+  color: #fff;
+  padding: 75px;
+  background-color: rgba(73, 140, 238, 1.0);
+}
+
+/*
+Icons
+*/
+.github-icon-svg,
+.facebook-icon-svg,
+.linkedin-icon-svg,
+.twitter-icon-svg,
+.email-icon-svg {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  position: relative;
+  /*padding:5px;*/
+}
+
+.github-icon-svg:hover{
+  opacity: 0.5;
+}
+
+.email-icon-svg:hover{
+  opacity: 0.5;
+}
+
+.dz-preview{
+  display: none;
+}
+
+
+
+
