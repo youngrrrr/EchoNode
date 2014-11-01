@@ -35,5 +35,5 @@ CREATE TABLE echo_history (
 	CONSTRAINT valid_lat CHECK (90 >= lat AND lat >= -90),
 	CONSTRAINT valid_lon CHECK (180 >= lon AND lon >= -180),
 	FOREIGN KEY (id) REFERENCES echo(id),
-	PRIMARY KEY (id)
+	PRIMARY KEY (id, datetime)
 );

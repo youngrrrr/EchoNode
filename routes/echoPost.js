@@ -1,7 +1,6 @@
-var fs = require('fs');
 var express = require('express');
 var router = express.Router();
-
+var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('echo.db');
 
@@ -16,12 +15,14 @@ var db = new sqlite3.Database('echo.db');
 		- datetime
 	+ whether or not the echo got rejected/deleted (as do_delete)
 */
-router.post('return_echo/', function(req, res){
+
+
+router.post('/return_echo', function(req, res){
 	//This request will only have the echo_history fields.
 	db.run("INSERT INTO echo_history VALUES ($id, $lat, $lon, $datetime)", {
-		$id: req.body.echo_id
-		$lat: req.body.lat
-		$lon: req.body.lon
+		$id: req.body.echo_id,
+		$lat: req.body.lat,
+		$lon: req.body.lon,
 		$datetime: req.body.datetime
 	});
 
@@ -35,7 +36,6 @@ router.post('return_echo/', function(req, res){
 	db.run("UPDATE echo SET echo_count = echo_count + 1" + sqldelete + " WHERE id = $id", req.body.echo_id);
 
 	//Response saying we're done
-	db.close();
 	res.end("success");
 });
 
@@ -49,32 +49,31 @@ router.post('return_echo/', function(req, res){
 		- lon
 		- datetime
 */
-router.post('new_echo/', function(req, res){
+router.post('/new_echo', function(req, res){
 	//This request will have the intersection of the echo and echo_history fields.
 	db.get("SELECT COUNT(id) AS count FROM echo", function(err, row) {
 		db.run("INSERT INTO echo VALUES ($id, $content, $content_type, 0, 0)", {
-			$id: row.count
-			$echo_content: req.body.echo_content
-			$echo_content_type: req.body.echo_content_type
+			$id: row.count,
+			$content: req.body.echo_content,
+			$content_type: req.body.echo_content_type
 		});
 
 		db.run("INSERT INTO echo_history VALUES ($id, $lat, $lon, $datetime)", {
-			$id: row.count
-			$lat: req.body.lat
-			$lon: req.body.lon
+			$id: row.count,
+			$lat: req.body.lat,
+			$lon: req.body.lon,
 			$datetime: req.body.datetime
 		});
 	});
 
 	//Response saying we're done
-	db.close();
 	res.end("success");
 
 	//This request will have both the image and the fields. Store stuff in the DB and upload the image to S3 or the filesystem.
 });
 
 /* POST for uploading an image file. This returns the image id. */
-router.post('uploads/', function(req, res){
+router.post('/uploads', function(req, res){
 	var fileName = req.files.SUMTHING
 	filePath = __dirname + '/uploads/' + fileName;
 
