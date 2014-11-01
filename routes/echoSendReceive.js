@@ -8,6 +8,7 @@ var fs = require('fs');
 /* POST for returning an echo. This is called when the client POSTs to return_echo/. */
 router.post('return_echo/', function(req, res){
 	//This request will only have the echo_history fields.
+	/*** OR YOU CAN ACCESS FIELDS LIKE id = req.body.id ***/
 	var params = req.params //An array of the parameters
 	//Process to see if it needs to be deleted.
 	//Update timestamp if it was accepted.
@@ -42,11 +43,11 @@ router.post('uploads/', function(req, res){
 
 /* GET methods: get from DB, send out a response */
 
-/* GET that is called when the client requests an echo. */
+/* GET that is called when the client requests an echo. Does NOT include the image. */
 router.get('get_echo/', function(req, res){
 	response = {}
 	response.id = 
-	response.content = 
+	//response.content = 
 	...
 	response.echo_count = 
 	res.json(response);
