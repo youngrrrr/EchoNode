@@ -1,26 +1,28 @@
-ECHO TABLE
-________________________________________________________________________________
+----------------------------------------
+echo
+----------------------------------------
 id
 content
+content_type (0 = plain text message, 1 = image)
+echo_count (# of times it has been echoed since original user)
 deleted
 
-================================================================================
-================================================================================
-================================================================================
-
-ECHO HISTORY TABLE
-________________________________________________________________________________
+----------------------------------------
+echo_history
+----------------------------------------
 id
 lat
-long
+lon
 datetime
-echo_count
-
 
 CREATE TABLE echo (
 	id INT NOT NULL,
 	content VARCHAR(300) NOT NULL,
+	content_type INT NOT NULL,
+	echo_count INT NOT NULL,
 	deleted INT NOT NULL,
+	CONSTRAINT valid_content_type CHECK (content_type == 0 OR content_type == 1),
+	CONSTRAINT valid_echo_count CHECK (echo_count >= 0),
 	CONSTRAINT deleted_is_bool CHECK (deleted == 0 OR deleted == 1),
 	PRIMARY KEY (id)
 );
@@ -28,12 +30,10 @@ CREATE TABLE echo (
 CREATE TABLE echo_history (
 	id INT NOT NULL,
 	lat DOUBLE NOT NULL,
-	long DOUBLE NOT NULL,
+	lon DOUBLE NOT NULL,
 	datetime DATETIME NOT NULL,
-	echo_count INT NOT NULL,
 	CONSTRAINT valid_lat CHECK (90 >= lat AND lat >= -90),
-	CONSTRAINT valid_long CHECK (180 >= long AND long >= -180),
-	CONSTRAINT valid_echo_count CHECK (echo_count >= 1),
+	CONSTRAINT valid_lon CHECK (180 >= lon AND lon >= -180),
 	FOREIGN KEY (id) REFERENCES echo(id),
 	PRIMARY KEY (id)
 );
