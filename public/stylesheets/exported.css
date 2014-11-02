@@ -304,7 +304,8 @@ About
 .about-echo{
   color: #fff;
   padding:75px;
-  background-color: rgba(51, 52, 50, 1.0);;
+  /*background-color: rgba(51, 52, 50, 1.0);;*/
+  background-color: rgba(76, 27, 13, 0.85);
 }
 
 .features-box{
