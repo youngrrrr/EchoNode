@@ -13,15 +13,18 @@ router.get('/get_echo', function(req, res){
 	response.lons = [];
 
 	db.get("SELECT eid FROM echo WHERE checked_out == 0 AND deleted == 0 ORDER BY RANDOM() LIMIT 1", function(err_pick_rando, row) {
+		console.log(row);
 		db.get("SELECT eid, econtent, econtent_type, echoes FROM echo WHERE eid = $eid", {$eid: row.eid}, function(err_get_echo, row_2) {
+			console.log("not really");
 			response.eid = row_2.eid;
 			response.econtent = row_2.econtent;
 			response.econtent_type = row_2.econtent_type;
 			response.echoes = row_2.echoes;
-			db.each("SELECT lat, lon FROM echo_history WHERE eid = $eid ORDER BY datetime ASC", {$eid: row_2.eid}, function(err_locations, row_3) {
+			db.each("SELECT eid, lat, lon FROM echo_history WHERE eid = $eid ORDER BY datetime ASC", {$eid: row_2.eid}, function(err_locations, row_3) {
 				response.lats.push(row_3.lat);
 				response.lons.push(row_3.lon);
-				db.run("UPDATE echo SET checked_out = 1 WHERE eid = $eid", {$eid: row.rand}, function() {
+				db.run("UPDATE echo SET checked_out = 1 WHERE eid = $eid", {$eid: row_3.eid}, function() {
+					console.log(response);
 					res.json(response);
 				});
 			});

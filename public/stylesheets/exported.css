@@ -140,7 +140,7 @@ a {
 ---------------------------------------------------------------*/
 .contact-info {
   padding: 20px 0;
-  background: #2f2f2f;
+  background: rgba(75, 85, 43, 1.0);
   border-bottom: 1px solid #3c3c3c;
 }
 .contact-info img {
@@ -304,7 +304,7 @@ About
 .about-echo{
   color: #fff;
   padding:75px;
-  background-color: rgba(199, 92, 92, 1.0);
+  background-color: rgba(51, 52, 50, 1.0);;
 }
 
 .features-box{
@@ -329,7 +329,7 @@ Contact
 .contact{
   color: #fff;
   padding: 75px;
-  background-color: rgba(73, 140, 238, 1.0);
+  background-color: rgba(58, 60, 55, 1.0);
 }
 
 /*
