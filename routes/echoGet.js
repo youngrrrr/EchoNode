@@ -69,9 +69,7 @@ router.get('/get_echoboard', function(req, res){
 
 /* GET request for the image. */
 router.get('uploads/', function(req, res){
-	var fileId = req.params.content;
-	//fileID guaranteed to be in DB
-	var filePath = "DO DAVID not sexually"
+	var filePath = req.body.path;
 	res.sendfile(filePath);
 })
 
