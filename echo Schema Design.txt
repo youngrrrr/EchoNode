@@ -1,39 +1,41 @@
 ----------------------------------------
 echo
 ----------------------------------------
-id
-content
-content_type (0 = plain text message, 1 = image)
-echo_count (# of times it has been echoed since original user)
+eid
+econtent
+econtent_type (0 = plain text message, 1 = image)
+echoes (# of times it has been echoed since original user)
+checked_out
 deleted
 
 ----------------------------------------
 echo_history
 ----------------------------------------
-id
+eid
 lat
 lon
 datetime
 
 CREATE TABLE echo (
-	id INT NOT NULL,
-	content VARCHAR(300) NOT NULL,
-	content_type INT NOT NULL,
-	echo_count INT NOT NULL,
+	eid INT NOT NULL,
+	econtent VARCHAR(300) NOT NULL,
+	econtent_type INT NOT NULL,
+	echoes INT NOT NULL,
+	checked_out INT NOT NULL,
 	deleted INT NOT NULL,
-	CONSTRAINT valid_content_type CHECK (content_type == 0 OR content_type == 1),
-	CONSTRAINT valid_echo_count CHECK (echo_count >= 0),
+	CONSTRAINT valid_econtent_type CHECK (econtent_type == 0 OR econtent_type == 1),
+	CONSTRAINT valid_echoes CHECK (echoes >= 0),
+	CONSTRAINT checked_out_is_bool CHECK (checked_out == 0 OR checked_out == 1),
 	CONSTRAINT deleted_is_bool CHECK (deleted == 0 OR deleted == 1),
-	PRIMARY KEY (id)
+	PRIMARY KEY (eid)
 );
-
 CREATE TABLE echo_history (
-	id INT NOT NULL,
+	eid INT NOT NULL,
 	lat DOUBLE NOT NULL,
 	lon DOUBLE NOT NULL,
 	datetime DATETIME NOT NULL,
 	CONSTRAINT valid_lat CHECK (90 >= lat AND lat >= -90),
 	CONSTRAINT valid_lon CHECK (180 >= lon AND lon >= -180),
-	FOREIGN KEY (id) REFERENCES echo(id),
-	PRIMARY KEY (id, datetime)
+	FOREIGN KEY (eid) REFERENCES echo(eid),
+	PRIMARY KEY (eid, datetime)
 );

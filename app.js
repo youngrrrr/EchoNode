@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-// var echoGet = require('./routes/echoGet');
+var echoGet = require('./routes/echoGet');
 var echoPost = require('./routes/echoPost');
 
 var app = express();
@@ -23,12 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-// app.use('/echoGet', echoGet);
+app.use('/echoGet', echoGet);
 app.use('/echoPost', echoPost);
-// app.use('/echoPost/new_echo', echoPost);
-// app.use('/echoPost/return_echo', echoPost);
-// app.use('/echoPost/uploads/', echoPost);
-
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
