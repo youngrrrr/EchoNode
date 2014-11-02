@@ -95,11 +95,11 @@ a {
   transition: all 0.3s ease-in-out;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
+  color: #8ad913 !important;
   font-size: 15px;
   text-transform: uppercase;
-  margin-top: 12px;
-  font-weight: 500;
+  margin-top: 20px;
+  font-weight: 400!important;
 }
 .nav > li > a {
   position: relative;
@@ -111,7 +111,7 @@ a {
   transition: all 0.3s ease-in-out;
 }
 .topnav-pages {
-  background: #fff;
+  background: #8ad913;
 }
 .navbar-brand-echo {
 /*  width: 174px;
@@ -214,12 +214,13 @@ Boxes for capture and solve
 */
 
 .echo-wrap{
-  background-image: url('../images/echo_icon.png');
-  /*background-repeat: no-repeat;*/
-  background-color: rgba(0.5, 0.5, 0.5, 0.5);
-  background-size: 100% 100%;
+  background-image: url('../images/icon.png');
+  background-repeat: no-repeat;
+  background-color: rgba(109, 109, 108, 0.8) !important;
+  background-size: 150% 150%;
   min-height: 100vh; /* min. height for modern browser */
   height: 100vh;
+  /*margin-left: -65px;*/
   /*height: 500px;*/
   /*background-color: rgba(200, 200, 100, 0.9);*/
   /*height: 3000px;*/
