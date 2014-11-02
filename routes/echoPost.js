@@ -68,8 +68,36 @@ router.post('/return_echo', function(req, res){
 	}
 
 	//Update echo_count
-	db.run("UPDATE echo SET " + sqldelete + "echoes = echoes + 1, checked_out = 0 WHERE eid = $eid", {
-		$eid: req.body.eid
+	db.run("UPDATE echo SET " + sqldelete + "echoes = echoes + 1, checked_out = 0 WHERE eid = $eid", {$eid: req.body.eid});
+	//Response saying we're done
+	res.end("success");
+});
+
+/* POST for sending a new echo. This is called when the client POSTs to new_echo/. */
+/* Expecting to receive:
+	echo:
+		- content (as echo_content)
+		- content_type (as echo_content_type)
+	echo_history:
+		- lat
+		- lon
+		- datetime
+*/
+router.post('/new_echo', function(req, res){
+	//This request will have the intersection of the echo and echo_history fields.
+	db.get("SELECT COUNT(id) AS count FROM echo", function(err, row) {
+		db.run("INSERT INTO echo VALUES ($id, $content, $content_type, 0, 0)", {
+			$id: row.count,
+			$content: req.body.echo_content,
+			$content_type: req.body.echo_content_type
+		});
+
+		db.run("INSERT INTO echo_history VALUES ($id, $lat, $lon, $datetime)", {
+			$id: row.count,
+			$lat: req.body.lat,
+			$lon: req.body.lon,
+			$datetime: req.body.datetimen
+		});
 	});
 
 	//Response saying we're done
@@ -78,9 +106,9 @@ router.post('/return_echo', function(req, res){
 
 /* POST for uploading an image file. This returns the image id. */
 router.post('/uploads', function(req, res){
-	var fileName = req.files.SUMTHING
-	filePath = __dirname + '/uploads/' + fileName;
-
+	// var fileName = req.files.SUMTHING
+	console.log(req.files)
+	// filePath = __dirname + '/uploads/' + fileName;
 	var writable = fs.createWriteStream(filePath);
 	req.pipe(writable);
 	req.on('end', function(){
