@@ -43,7 +43,7 @@
 	<div id = "skrollr-body">
 		<div class="echo-wrap" data-0="background-position:0px 0px;" data-350000="background-position:0px -40000px;" id = "echo">
 			<div class = "container-fluid">
-					<!-- The anti-social network that everyone has time for. -->
+				<h3 style="color: #fff; text-align: right; font-size:80px; padding=2px; margin-top: 20%">&nbsp; AN EXPERIMENT IN <br> ANTI-SOCIAL  NETWORKING. </h3>
 			</div>
 		</div>
 	</div>
@@ -52,7 +52,6 @@
 	<div class = "about-echo" id = "about">
 		<div class = "row">
 			<div class="text-center">
-				<h3 style="font-size:60px; padding=2px">&nbsp; THE ANTI-SOCIAL NETWORK THAT EVERYONE HAS TIME FOR.</h3>
 				<div class = "space30"></div>
 			</div>
 			<div class = "space30"></div>
@@ -85,13 +84,28 @@
 	</div>
 </div>
 
+<table class = "table" id = "leaderboard">
+	<tr>
+		<!-- <th> Rank </th> -->
+		<th> Number echoes </th>
+		<th> Echo </th>
+	</tr>
+<% for (var i = 0; i < echoboard.length; i++){%>
+	<tr>
+<!-- 		 <th> <%= i + 1 %></th> -->
+		<th> <%= echoboard[i]["echoes"] %></th>
+		<th><%= echoboard[i]["econtent"] %> </th>
+	</tr>
+<% } %>
+</table>
+
 <div class = "contact" id = "more">
 	<div class = "row">
 		<div class="text-center">
-			<h3 style="font-size: 46px; margin-left: -10px;">2 &nbsp; MORE</h3>
 			<div class = "space30"></div>
-			<h4> echo was made by Nick McKenna, David Liu, and Young-Rae Kim. </h4>
+			<h4> Echo was made by Nick McKenna, David Liu, and Young-Rae Kim. </h4>
 			<div class = "space70"></div>
+			<h4 style="color:#fff;"> Curious to know how it works? Want to make your own echo app? Check out our Github. </h4>
 		</div>
 	</div>
 </div>
@@ -100,9 +114,7 @@
 	<div class="container">
 		<div class="row">
 			<div class = "text-center">
-				<h3 style="font-size: 46px; color:#fff">3 &nbsp; CONTACT US</h3>
 				<div class = "space30"></div>
-				<h4 style="color:#fff;"> Curious to know how it works? Want to make your own echo app? Check out our Github. </h4>
 			</div>
 			<ul class="social">
 				<li>          
@@ -120,19 +132,9 @@
 						c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
 					</svg>
 				</a></li>
-				<li>                
-					<a href="mailto:asdf@asdf.com">
-						<svg version="1.1" class = "email-icon-svg" fill = "#C2C2C2" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-						<g>
-							<path d="M15,4H1C0.448,4,0,4.448,0,5v1.679l8,3.2l8-3.2V5C16,4.448,15.552,4,15,4z"/>
-							<path d="M0,8.312V15c0,0.552,0.448,1,1,1h14c0.552,0,1-0.448,1-1V8.312l-8,3.2L0,8.312z"/>
-						</g>
-					</svg>
-				</a></li>
 			</ul>
 			<hr />
-			<p>&copy; 2014 echo, Inc.</p>
+			<!-- <p>&copy; 2014 echo, Inc.</p> -->
 		</div>
 	</div>
 </div>
