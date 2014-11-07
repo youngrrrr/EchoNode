@@ -23,10 +23,12 @@ router.get('/get_echo', function(req, res){
 			db.each("SELECT eid, lat, lon FROM echo_history WHERE eid = $eid ORDER BY datetime ASC", {$eid: row_2.eid}, function(err_locations, row_3) {
 				response.lats.push(row_3.lat);
 				response.lons.push(row_3.lon);
-				db.run("UPDATE echo SET checked_out = 1 WHERE eid = $eid", {$eid: row_3.eid}, function() {
 					console.log(response);
 					res.json(response);
-				});
+				// db.run("UPDATE echo SET checked_out = 1 WHERE eid = $eid", {$eid: row_3.eid}, function() {
+				// 	console.log(response);
+				// 	res.json(response);
+				// });
 			});
 		});
 	});
