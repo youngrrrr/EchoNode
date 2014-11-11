@@ -16,7 +16,7 @@ var db = new sqlite3.Database('echo.db');
 		- lon
 		- datetime
 */
-router.post('/new_echo', function(req, res){
+router.post('/new_echo', function(req, res) {
 	//This request will have the intersection of the echo and echo_history fields.
 	console.log(req);
 
@@ -34,13 +34,23 @@ router.post('/new_echo', function(req, res){
 			$datetime: req.body.datetime
 		});
 
+		//http://freshbrewedcode.com/jimcowart/2013/01/29/what-you-might-not-know-about-json-stringify/
 		if(err) {
 			res.send(404);
+		} else {
+			var body = JSON.stringify({
+				toJSON: function() {
+					return {
+						eid : row.count
+					}
+				}
+			});
+			res.end(body);
 		}
 	});
 
 	//Response saying we're done
-	res.end("success");
+	// res.end("success");
 });
 
 /* POST for returning an echo. This is called when the client POSTs to return_echo/. */

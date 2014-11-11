@@ -13,24 +13,36 @@ router.get('/get_echo', function(req, res){
 	response.lons = [];
 
 	db.get("SELECT eid FROM echo WHERE checked_out == 0 AND deleted == 0 ORDER BY RANDOM() LIMIT 1", function(err_pick_rando, row) {
-		console.log(row);
-		db.get("SELECT eid, econtent, econtent_type, echoes FROM echo WHERE eid = $eid", {$eid: row.eid}, function(err_get_echo, row_2) {
-			console.log("not really");
-			response.eid = row_2.eid;
-			response.econtent = row_2.econtent;
-			response.econtent_type = row_2.econtent_type;
-			response.echoes = row_2.echoes;
-			db.each("SELECT eid, lat, lon FROM echo_history WHERE eid = $eid ORDER BY datetime ASC", {$eid: row_2.eid}, function(err_locations, row_3) {
-				response.lats.push(row_3.lat);
-				response.lons.push(row_3.lon);
-					console.log(response);
-					res.json(response);
-				// db.run("UPDATE echo SET checked_out = 1 WHERE eid = $eid", {$eid: row_3.eid}, function() {
-				// 	console.log(response);
-				// 	res.json(response);
-				// });
-			});
-		});
+		if(row == null) {
+			response.eid = -1;
+			res.json(response);
+		} else {
+			db.get("SELECT eid, econtent, econtent_type, echoes FROM echo WHERE eid = $eid", {$eid: row.eid}, function(err_get_echo, row_2) {
+				response.eid = row_2.eid;
+				response.econtent = row_2.econtent;
+				response.econtent_type = row_2.econtent_type;
+				response.echoes = row_2.echoes;
+				db.each("SELECT eid, lat, lon FROM echo_history WHERE eid = $eid ORDER BY datetime ASC", {$eid: row_2.eid}, function(err_locations, row_3) {
+					response.lats.push(row_3.lat);
+					response.lons.push(row_3.lon);
+					db.run("UPDATE echo SET checked_out = 0 WHERE eid = $eid", {$eid: row_3.eid}, function() {
+						console.log(response);
+						res.json(response);
+					});
+				if(err_locations) {
+					console.log("1");
+					res.send(404);
+				}});
+			if(err_get_echo) {
+				console.log("2");
+				res.send(404);
+			}});
+		}
+
+		if(err_pick_rando) {
+			console.log("3");
+			res.send(404);
+		}
 	});
 });
 
@@ -45,7 +57,11 @@ router.get('/get_echoboard', function(req, res){
 			response.echoboard.push(row);
 		});
 
-		res.json(response);
+		if(err) {
+			res.send(404);
+		} else {
+			res.json(response);
+		}
 	});
 }); 
 

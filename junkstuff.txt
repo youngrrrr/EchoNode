@@ -16,6 +16,7 @@ curl -X POST -H "Accept: application/json" -H "Content-type: application/json" h
 curl -X POST -H "Accept: application/json" -H "Content-type: application/json" http://localhost:3000/echoPost/new_echo -d '{"econtent": "Masturbation was the original life hack.", "econtent_type": 0, "lat": 21.4682, "lon": 84.5263, "datetime": "2014-05-03 00:44:58"}'
 curl -X POST -H "Accept: application/json" -H "Content-type: application/json" http://localhost:3000/echoPost/new_echo -d '{"econtent": "Wayne Static - Dead at 48. Horrible news.", "econtent_type": 0, "lat": -5.4135, "lon": 34.5293, "datetime": "2014-11-02 00:00:00"}'
 curl -X POST -H "Accept: application/json" -H "Content-type: application/json" http://localhost:3000/echoPost/new_echo -d '{"econtent": "This is the first time I have made it through the month of October without hearing Monster Mash once.", "econtent_type": 0, "lat": -62.4427, "lon": 113.7068, "datetime": "2014-10-31 18:00:33"}'
+curl -X POST -H "Accept: application/json" -H "Content-type: application/json" http://localhost:3000/echoPost/new_echo -d '{"econtent": "testing", "econtent_type": 0, "lat": 79.1935, "lon": 104.9539, "datetime": "2014-11-11 15:01:28"}'
 
 ------------------------------------------------------------
 return_echo:
